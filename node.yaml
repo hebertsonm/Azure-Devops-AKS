@@ -23,7 +23,7 @@ spec:
         - bash
         - -c
         - npm install --prod && npm start
-        image: node:8-jessie
+        image: node:_version_
         name: node
         ports:
         - containerPort: 8080
