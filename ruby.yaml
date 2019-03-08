@@ -23,7 +23,7 @@ spec:
         - bash
         - -c
         - bundle install && ruby app.rb
-        image: ruby:2.5
+        image: ruby:_version_
         name: ruby
         ports:
         - containerPort: 4567
