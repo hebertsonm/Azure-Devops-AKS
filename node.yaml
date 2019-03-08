@@ -1,0 +1,61 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: ./kompose convert
+    kompose.version: 1.16.0 (0c01309)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: node
+  name: node
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        io.kompose.service: node
+    spec:
+      containers:
+      - args:
+        - bash
+        - -c
+        - npm install --prod && npm start
+        image: node:8-jessie
+        name: node
+        ports:
+        - containerPort: 8080
+        resources: {}
+        volumeMounts:
+        - mountPath: /app
+          name: node-claim0
+        workingDir: /app
+      restartPolicy: Always
+      volumes:
+      - name: node-claim0
+        persistentVolumeClaim:
+          claimName: node-claim0
+status: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    kompose.cmd: ./kompose convert
+    kompose.version: 1.16.0 (0c01309)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: node
+  name: node
+spec:
+  ports:
+  - name: "8080"
+    port: 8080
+    targetPort: 8080
+  selector:
+    io.kompose.service: node
+status:
+  loadBalancer: {}
+
