@@ -23,8 +23,8 @@ spec:
     spec:
       containers:
       - name: node
-        image: node:_version_
-        imagePullPolicy: Never
+        image: hebertsonm/node:_version_
+        imagePullPolicy: Aways
         ports:
         - containerPort: 8080
         resources: {}
