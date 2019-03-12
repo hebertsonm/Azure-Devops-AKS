@@ -23,11 +23,13 @@ spec:
     spec:
       containers:
       - name: ruby
-        image: hebertsonm/ruby:_version_
+        image: meuscontainers.azurecr.io/hebertsonm/ruby:_version_
         imagePullPolicy: Always
         ports:
         - containerPort: 4567
         resources: {}
+      imagePullSecrets:
+      - name: acr
       restartPolicy: Always
 ---
 kind: Service
