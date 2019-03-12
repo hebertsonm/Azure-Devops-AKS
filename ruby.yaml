@@ -22,6 +22,7 @@ spec:
         app: ruby
     spec:
       containers:
+      - name: ruby
         image: ruby:2x
         imagePullPolicy: Never
         ports:
