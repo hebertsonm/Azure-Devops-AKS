@@ -1,0 +1,18 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: nginx
+  namespace: default
+spec:
+  tls:
+  - hosts:
+    - myapp.westus2.cloudapp.azure.com
+    secretName: cert-secret
+  rules:
+  - host: myapp.westus2.cloudapp.azure.com
+    http:
+      paths:
+      - backend:
+          serviceName: kubernetes
+          servicePort: 80
+        path: /

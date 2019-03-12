@@ -1,61 +1,43 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1beta2
 kind: Deployment
 metadata:
   annotations:
-    kompose.cmd: ./kompose convert
-    kompose.version: 1.16.0 (0c01309)
-  creationTimestamp: null
+    name: node
   labels:
-    io.kompose.service: node
+    app: node
   name: node
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: node
   strategy:
-    type: Recreate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+    type: RollingUpdate
   template:
     metadata:
-      creationTimestamp: null
       labels:
-        io.kompose.service: node
+        app: node
     spec:
       containers:
-      - args:
-        - bash
-        - -c
-        - npm install --prod && npm start
-        image: node:8-jessie
-        name: node
+      - name: node
+        image: node:2x
+        imagePullPolicy: Never
         ports:
         - containerPort: 8080
         resources: {}
-        volumeMounts:
-        - mountPath: /app
-          name: node-claim0
-        workingDir: /app
       restartPolicy: Always
-      volumes:
-      - name: node-claim0
-        persistentVolumeClaim:
-          claimName: node-claim0
-status: {}
 ---
-apiVersion: v1
 kind: Service
+apiVersion: v1
 metadata:
-  annotations:
-    kompose.cmd: ./kompose convert
-    kompose.version: 1.16.0 (0c01309)
-  creationTimestamp: null
-  labels:
-    io.kompose.service: node
   name: node
 spec:
-  ports:
-  - name: "8080"
-    port: 8080
-    targetPort: 8080
   selector:
-    io.kompose.service: node
-status:
-  loadBalancer: {}
-
+    app: node
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 8080

@@ -1,40 +1,43 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1beta2
 kind: Deployment
 metadata:
   annotations:
-    kompose.cmd: ./kompose convert
-    kompose.version: 1.16.0 (0c01309)
-  creationTimestamp: null
+    name: ruby
   labels:
-    io.kompose.service: ruby
+    app: ruby
   name: ruby
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: ruby
   strategy:
-    type: Recreate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+    type: RollingUpdate
   template:
     metadata:
-      creationTimestamp: null
       labels:
-        io.kompose.service: ruby
+        app: ruby
     spec:
       containers:
-      - args:
-        - bash
-        - -c
-        - bundle install && ruby app.rb
-        image: ruby:2.5
-        name: ruby
+      - name: ruby
+        image: ruby:2x
+        imagePullPolicy: Never
         ports:
         - containerPort: 4567
         resources: {}
-        volumeMounts:
-        - mountPath: /app
-          name: ruby-claim0
-        workingDir: /app
       restartPolicy: Always
-      volumes:
-      - name: ruby-claim0
-        persistentVolumeClaim:
-          claimName: ruby-claim0
-status: {}
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: ruby
+spec:
+  selector:
+    app: ruby
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 4567
