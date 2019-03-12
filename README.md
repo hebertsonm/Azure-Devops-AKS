@@ -58,6 +58,16 @@ Use the following **kubectl** command to create the Kubernetes secret. Replace `
 ```bash
 kubectl create secret docker-registry acr-auth --docker-server <acr-login-server> --docker-username <service-principal-ID> --docker-password <service-principal-password> --docker-email <email-address>
 ```
+or
+```
+apiVersion: v1
+kind: Secret
+metadata:
+  name: acr-auth
+data:
+  .dockerconfigjson: <Service principal password>
+type: <SERVICE_PRINCIPAL_NAME/repository>
+```
 
 You can now use the Kubernetes secret in pod deployments by specifying its name (in this case, "acr-auth") in the `imagePullSecrets` parameter:
 
