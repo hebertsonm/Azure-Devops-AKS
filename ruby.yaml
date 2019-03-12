@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
       - name: ruby
-        image: ruby:_version_
+        image: hebertsonm/ruby:_version_
         imagePullPolicy: Never
         ports:
         - containerPort: 4567
