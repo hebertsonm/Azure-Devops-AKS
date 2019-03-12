@@ -9,7 +9,7 @@ spec:
     serviceName: default-http-backend
     servicePort: 80
   rules:
-  - host: myminikube.info
+  - host: _fqdn_ #myminikube.info
     http:
       paths:
       - path: /js
