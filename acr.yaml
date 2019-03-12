@@ -3,5 +3,5 @@ kind: Secret
 metadata:
   name: acr
 data:
-  .dockerconfigjson: r5NsSy2qVf+LJEgY732I9=ys7AUrtUVk
+  .dockerconfigjson: _secret_
 type: meuscontainers.azurecr.io/hebertsonm
