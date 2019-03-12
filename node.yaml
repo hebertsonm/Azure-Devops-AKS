@@ -22,18 +22,9 @@ spec:
         app: node
     spec:
       containers:
-<<<<<<< HEAD
       - name: node
         image: node:2x
         imagePullPolicy: Never
-=======
-      - args:
-        - bash
-        - -c
-        - npm install --prod && npm start
-        image: node:_version_
-        name: node
->>>>>>> 28fcb16d2eba2d65a6b9a38ec25e4463b257faaa
         ports:
         - containerPort: 8080
         resources: {}
