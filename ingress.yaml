@@ -1,18 +1,22 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: nginx
-  namespace: default
+  name: ingress-tutorial
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
-  tls:
-  - hosts:
-    - myapp.westus2.cloudapp.azure.com
-    secretName: cert-secret
+  backend: #unmatched requests come here
+    serviceName: default-http-backend
+    servicePort: 80
   rules:
-  - host: myapp.westus2.cloudapp.azure.com
+  - host: myminikube.info
     http:
       paths:
-      - backend:
-          serviceName: kubernetes
-          servicePort: 80
-        path: /
+      - path: /js
+        backend:
+          serviceName: node
+          servicePort: 8080
+      - path: /rb
+        backend:
+          serviceName: ruby
+          servicePort: 4567
