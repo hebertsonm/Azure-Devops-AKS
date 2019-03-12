@@ -22,18 +22,8 @@ spec:
         app: ruby
     spec:
       containers:
-<<<<<<< HEAD
-      - name: ruby
         image: ruby:2x
         imagePullPolicy: Never
-=======
-      - args:
-        - bash
-        - -c
-        - bundle install && ruby app.rb
-        image: ruby:_version_
-        name: ruby
->>>>>>> 28fcb16d2eba2d65a6b9a38ec25e4463b257faaa
         ports:
         - containerPort: 4567
         resources: {}
