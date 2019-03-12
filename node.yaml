@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
       - name: node
-        image: node:2x
+        image: node:_version_
         imagePullPolicy: Never
         ports:
         - containerPort: 8080
