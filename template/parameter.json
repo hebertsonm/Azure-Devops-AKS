@@ -2,10 +2,40 @@
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "managedClusters_k8s_name": {
+        "resourceName": {
             "value": null
         },
-        "managedClusters_k8s_loganalyticsworkspaceresourceid": {
+        "location": {
+            "value": "centralus"
+        },
+        "dnsPrefix": {
+            "value": null
+        },
+        "agentCount": {
+            "value": 2
+        },
+        "agentVMSize": {
+            "value": "Standard_B2s"
+        },
+        "kubernetesVersion": {
+            "value": "1.12.6"
+        },
+        "networkPlugin": {
+            "value": "kubenet"
+        },
+        "enableRBAC": {
+            "value": true
+        },
+        "enableHttpApplicationRouting": {
+            "value": false
+        },
+        "workspaceName": {
+            "value": "DefaultWorkspace-62576bd7-def3-4533-9d2b-b9479ac76b5b-EUS"
+        },
+        "omsWorkspaceId": {
+            "value": "/subscriptions/62576bd7-def3-4533-9d2b-b9479ac76b5b/resourcegroups/defaultresourcegroup-eus/providers/microsoft.operationalinsights/workspaces/defaultworkspace-62576bd7-def3-4533-9d2b-b9479ac76b5b-eus"
+        },
+        "workspaceRegion": {
             "value": null
         }
     }
