@@ -6,7 +6,7 @@
             "value": null
         },
         "location": {
-            "value": "centralus"
+            "value": "[resourceGroup().location]"
         },
         "dnsPrefix": {
             "value": null
