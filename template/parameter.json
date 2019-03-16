@@ -36,7 +36,7 @@
             "value": "/subscriptions/62576bd7-def3-4533-9d2b-b9479ac76b5b/resourcegroups/defaultresourcegroup-eus/providers/microsoft.operationalinsights/workspaces/defaultworkspace-62576bd7-def3-4533-9d2b-b9479ac76b5b-eus"
         },
         "workspaceRegion": {
-            "value": null
+            "value": "eastus"
         }
     }
 }
