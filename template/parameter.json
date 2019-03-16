@@ -37,6 +37,12 @@
         },
         "workspaceRegion": {
             "value": "eastus"
+        },
+        "servicePrincipalClientId": {
+            "value": null
+        },
+        "servicePrincipalClientSecret": {
+            "value": null
         }
     }
 }
