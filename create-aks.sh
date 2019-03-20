@@ -35,8 +35,7 @@ DONE=0
 while [ $DONE -eq 0 ]; do
    sleep 7;
    tiller="`kubectl get pods -n kube-system | grep tiller-deploy | awk '{ print $3 }'`"
-   echo $tiller
-   if [ "$tiller" = "Running"  ]; then echo tiller ok && DONE=1 ; fi;
+   if [ "$tiller" = "Running"  ]; then DONE=1 ; fi;
 done
 
 #helm init --wait --tiller-namespace "$namespace"
@@ -46,7 +45,6 @@ helm install stable/nginx-ingress --namespace "$namespace" --set controller.repl
 DONE=0
 while [ $DONE -eq 0 ]; do
    ingress="`kubectl get service -l app=nginx-ingress --namespace "$namespace" | grep kube-nginx-ingress-controller | awk '{ print $4; }'`"
-   echo $ingress
    if [ "$ingress" != "<pending>" ]; then lb_ip=$ingress && DONE=1 ; fi;
    sleep 5;
 done
