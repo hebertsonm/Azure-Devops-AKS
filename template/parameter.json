@@ -3,13 +3,13 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "resourceName": {
-            "value": null
+            "value": "k8s2"
         },
         "location": {
-            "value": null
+            "value": "eastus"
         },
         "dnsPrefix": {
-            "value": null
+            "value": "myk8s"
         },
         "agentCount": {
             "value": 2
@@ -39,10 +39,10 @@
             "value": "eastus"
         },
         "servicePrincipalClientId": {
-            "value": null
+            "value": "5f049859-47d4-4fec-9dbf-4e8afda7a2b1"
         },
         "servicePrincipalClientSecret": {
-            "value": null
+            "value": "LG6Nfm0YuntNm5RkMen2ILvoBGjve9sfRZwe2ppfJY4="
         }
     }
 }
