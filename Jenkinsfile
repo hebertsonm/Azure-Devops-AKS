@@ -7,4 +7,5 @@ pipeline {
                 echo '#### Building..'
             }
         }
+    }
 }
