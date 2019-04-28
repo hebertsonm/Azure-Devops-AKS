@@ -4,9 +4,7 @@ pipeline {
     
   stages {
         stage( 'build and push stage image' ) {
-          when {
-            branch 'master'
-          }
+
           steps {
             withDockerRegistry(reg) {
               sh """
