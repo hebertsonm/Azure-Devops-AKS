@@ -1,4 +1,4 @@
-def reg = [credentialsId: 'hebertsonm', url: 'https://index.docker.io/v1/']
+def reg = [credentialsId: 'hebertsonmx', url: 'https://index.docker.io/v1/']
 pipeline {
   agent none
     
