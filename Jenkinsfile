@@ -1,9 +1,8 @@
 def reg = [credentialsId: 'hebertsonm', url: 'https://index.docker.io/v1/']
-
 pipeline {
   agent none
     
-      stages {
+  stages {
         stage( 'build and push stage image' ) {
           when {
             branch 'master'
@@ -17,5 +16,5 @@ pipeline {
             }
           }
         }
-      }
+  }
 }
